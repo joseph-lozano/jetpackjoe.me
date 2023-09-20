@@ -1,5 +1,5 @@
 ---
-import { mapPosts } from "../../../utils/post.utils";
+import { findTags, mapPosts } from "../../../utils/post.utils";
 import TagsLayout from "../../../layouts/TagsLayout.astro";
 
 const { tag } = Astro.params;
@@ -8,14 +8,17 @@ const { tag } = Astro.params;
 const posts = await Astro.glob("../*.{md,mdx}");
 const mappedPosts = mapPosts(posts);
 
-export function getStaticPaths() {
-  return [
-    { params: { tag: "general" } },
-    { params: { tag: "tech" } },
-    { params: { tag: "food" } },
-    { params: { tag: "nature" } },
-    { params: { tag: "astro" } },
-  ];
+export async function getStaticPaths() {
+  /*
+  The getStaticPaths() function executes in its own isolated scope once, before any page loads. 
+  Therefore you can’t reference anything from its parent scope, other than file imports. 
+
+  https://docs.astro.build/en/reference/api-reference/#getstaticpaths
+  */
+  const posts = await Astro.glob("../*.{md,mdx}");
+  const mappedPosts = mapPosts(posts);
+  const tags = findTags(mappedPosts);
+  return tags.map((tag) => ({ params: { tag } }));
 }
 ---
 
