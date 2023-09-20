@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon";
+import { SITE_TITLE } from "../config";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -10,42 +11,41 @@ const currentYear = new Date().getFullYear();
       <div class="basis-3/4 text-left">
         <div class="flex flex-row mb-2">
           <a
-            class="mr-2 hover:text-red-500 dark:text-white dark:hover:text-red-500"
-            href="/imprint">Imprint</a
-          >
-          <a
-            class="mr-2 hover:text-red-500 dark:text-white dark:hover:text-red-500"
+            class="mr-2 hover:text-primary-500 dark:text-white dark:hover:text-primary-500"
             href="/blog">Blog</a
           >
           <a
-            class="mr-2 hover:text-red-500 dark:text-white dark:hover:text-red-500"
+            class="mr-2 hover:text-primary-500 dark:text-white dark:hover:text-primary-500"
             href="/about">About</a
           >
         </div>
         <div>
-          &copy; {currentYear} AWESOME NAME.
+          &copy; {currentYear}
+          <span class="ml-1">
+            {SITE_TITLE}
+          </span>.
         </div>
       </div>
       <div class="basis-1/4 justify-end flex flex-row">
         <a
           href="/rss.xml"
-          class="ml-4 hover:text-red-500 dark:text-white dark:hover:text-red-500"
+          class="ml-4 hover:text-primary-500 dark:text-white dark:hover:text-primary-500"
           aria-label="rss"
           rel="noopener"
         >
           <Icon name="fa:feed" />
         </a>
         <a
-          href="#"
-          class="ml-4 hover:text-red-500 dark:text-white dark:hover:text-red-500"
+          href="mailto:joe@jetpackjoe.me"
+          class="ml-4 hover:text-primary-500 dark:text-white dark:hover:text-primary-500"
           aria-label="Email"
           rel="noopener"
         >
           <Icon name="fa-solid:envelope" />
         </a>
         <a
-          href="#"
-          class="ml-4 hover:text-red-500 dark:text-white dark:hover:text-red-500"
+          href="https://github.com/joseph-lozano/jetpackjoe.me"
+          class="ml-4 hover:text-primary-500 dark:text-white dark:hover:text-primary-500"
           aria-label="Github"
           rel="noopener"
         >

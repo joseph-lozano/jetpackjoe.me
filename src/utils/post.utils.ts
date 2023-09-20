@@ -9,7 +9,7 @@ export const mapPosts = (posts: Record<string, any>[]): Post[] => {
     .sort(
       (a, b) =>
         new Date(b.frontmatter.pubDate).valueOf() -
-        new Date(a.frontmatter.pubDate).valueOf()
+        new Date(a.frontmatter.pubDate).valueOf(),
     );
 
   return mappedPosts;
